@@ -64,14 +64,23 @@
       return (
         <div className="min-h-screen bg-slate-900 text-white">
           <nav className="sticky top-0 z-50 bg-slate-900 bg-opacity-95 backdrop-blur-md border-b border-slate-800">
-            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-              <span className="text-xl font-bold">VeriHaul</span>
-              <div className="flex gap-6">
-                <a href="#features" className="text-gray-300 hover:text-cyan-400 transition">Features</a>
-                <a href="#pricing" className="text-gray-300 hover:text-cyan-400 transition">Pricing</a>
-                <a href="#faq" className="text-gray-300 hover:text-cyan-400 transition">FAQ</a>
+            <div className="max-w-7xl mx-auto px-6 py-4">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <svg width="140" height="48" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 25 10 L 42 16 Q 46 18 46 22 L 46 45 Q 46 52 25 58 Q 4 52 4 45 L 4 22 Q 4 18 8 16 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1" opacity="0.4"/>
+                  <path d="M 25 14 L 40 19 Q 43 20 43 24 L 43 45 Q 43 50 25 55 Q 7 50 7 45 L 7 24 Q 7 20 10 19 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1.2" opacity="0.7"/>
+                  <path d="M 25 18 L 38 22 Q 40 23 40 26 L 40 45 Q 40 49 25 53 Q 10 49 10 45 L 10 26 Q 10 23 12 22 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1.5"/>
+                  <rect x="21.5" y="32" width="7" height="9" fill="#06b6d4" rx="0.8"/>
+                  <path d="M 23 32 Q 23 29 25 28 Q 27 29 27 32" fill="none" stroke="#06b6d4" strokeWidth="1.2"/>
+                  <text x="60" y="38" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" fontSize="32" fontWeight="700" fill="#ffffff" dominantBaseline="middle">VeriHaul</text>
+                </svg>
+                <div className="flex gap-6 order-3 w-full sm:w-auto sm:order-2">
+                  <a href="#features" className="text-gray-300 hover:text-cyan-400 transition">Features</a>
+                  <a href="#pricing" className="text-gray-300 hover:text-cyan-400 transition">Pricing</a>
+                  <a href="#faq" className="text-gray-300 hover:text-cyan-400 transition">FAQ</a>
+                </div>
+                <button className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg transition whitespace-nowrap order-2 sm:order-3">Request Demo</button>
               </div>
-              <button className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg transition">Request Demo</button>
             </div>
           </nav>
 
@@ -139,7 +148,7 @@
                 <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition">
                   <Shield />
                   <h3 className="text-xl font-bold mb-3 mt-4">Multi-Factor Identity Verification</h3>
-                  <p className="text-gray-300">VeriHaul verifies carriers using business filings, DOT and MC numbers, insurance, safety records, ELD and telematics, financials, and legal history. Our AI taps real-time APIs to detect fraud and operational risks, keeping your freight secure.</p>
+                  <p className="text-gray-300">VeriHaul cross-validates business filings, DOT/MC numbers, insurance status, social presence, and ELD signals. Our AI engine learns from millions of data points to instantly detect anomalies, impersonations, and spoofing attempts before they cause damage.</p>
                 </div>
 
                 <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition">
