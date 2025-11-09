@@ -1,214 +1,194 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VeriHaul - Global Freight. Verified.</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='50' height='68' viewBox='0 0 50 68' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 25 10 L 42 16 Q 46 18 46 22 L 46 45 Q 46 52 25 58 Q 4 52 4 45 L 4 22 Q 4 18 8 16 Z' fill='%230a1628' stroke='%2306b6d4' stroke-width='1' opacity='0.4'/%3E%3Cpath d='M 25 14 L 40 19 Q 43 20 43 24 L 43 45 Q 43 50 25 55 Q 7 50 7 45 L 7 24 Q 7 20 10 19 Z' fill='%230a1628' stroke='%2306b6d4' stroke-width='1.2' opacity='0.7'/%3E%3Cpath d='M 25 18 L 38 22 Q 40 23 40 26 L 40 45 Q 40 49 25 53 Q 10 49 10 45 L 10 26 Q 10 23 12 22 Z' fill='%230a1628' stroke='%2306b6d4' stroke-width='1.5'/%3E%3Crect x='21.5' y='32' width='7' height='9' fill='%2306b6d4' rx='0.8'/%3E%3Cpath d='M 23 32 Q 23 29 25 28 Q 27 29 27 32' fill='none' stroke='%2306b6d4' stroke-width='1.2'/%3E%3C/svg%3E">
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
-<body>
-  <div id="root"></div>
-  
-  <script type="text/babel">
-    const { useState, useEffect } = React;
+import { useState, useEffect } from 'react';
 
-    const Shield = () => <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>;
-    const Zap = () => <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>;
-    const Network = () => <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>;
-    const Lock = () => <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>;
-    const Check = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>;
-    const ChevronDown = ({ className }) => <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>;
-    const Mail = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>;
+const Shield = () => <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>;
+const Zap = () => <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>;
+const Network = () => <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>;
+const Lock = () => <svg className="w-12 h-12 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>;
+const Check = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>;
+const ChevronDown = ({ className }) => <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>;
+const Mail = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>;
 
-    function VeriHaulLanding() {
-      const [faqOpen, setFaqOpen] = useState(null);
+export default function VeriHaulLanding() {
+  const [faqOpen, setFaqOpen] = useState(null);
 
-      useEffect(() => {
-        const link = document.createElement('link');
-        link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap';
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-        document.body.style.fontFamily = "'Inter', sans-serif";
-      }, []);
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+    document.body.style.fontFamily = "'Inter', sans-serif";
+  }, []);
 
-      const faqItems = [
-        { q: "How does VeriHaul reduce cargo theft?", a: "VeriHaul authenticates carriers in real-time before shipment using multi-factor verification, flags high-risk loads based on AI scoring, and creates a verified digital identity for every shipment. This makes it nearly impossible for fake carriers or double brokers to slip through undetected." },
-        { q: "What data sources does VeriHaul use?", a: "We integrate FMCSA, DOT, insurance registries, domain registration data, social profiles, ELD/GPS patterns, and TMS platforms. Our AI engine continuously analyzes this data to detect fraud and anomalies." },
-        { q: "Does VeriHaul work with my TMS?", a: "Yes. VeriHaul integrates via API with leading TMS platforms including Truckstop, DAT, and McLeod. Verification happens automatically when loads are created." },
-        { q: "How are documents authenticated?", a: "We use machine learning to verify document authenticity and consistency. VeriHaul detects forgeries, mismatches, and re-use attempts by analyzing document patterns across our network. Every BOL, COI, and contract is validated against millions of verified examples, catching fraud attempts before they succeed." },
-        { q: "How long does verification take?", a: "Real-time. Carrier authentication completes in seconds, and risk scoring happens automatically as the load is created. No delays to your workflow." }
-      ];
+  const faqItems = [
+    { q: "How does VeriHaul reduce cargo theft?", a: "VeriHaul authenticates carriers in real-time before shipment using multi-factor verification, flags high-risk loads based on AI scoring, and creates a verified digital identity for every shipment. This makes it nearly impossible for fake carriers or double brokers to slip through undetected." },
+    { q: "What data sources does VeriHaul use?", a: "We integrate FMCSA, DOT, insurance registries, domain registration data, social profiles, ELD/GPS patterns, and TMS platforms. Our AI engine continuously analyzes this data to detect fraud and anomalies." },
+    { q: "Does VeriHaul work with my TMS?", a: "Yes. VeriHaul integrates via API with leading TMS platforms including Truckstop, DAT, and McLeod. Verification happens automatically when loads are created." },
+    { q: "How are documents authenticated?", a: "We use machine learning to verify document authenticity and consistency. VeriHaul detects forgeries, mismatches, and re-use attempts by analyzing document patterns across our network. Every BOL, COI, and contract is validated against millions of verified examples, catching fraud attempts before they succeed." },
+    { q: "How long does verification take?", a: "Real-time. Carrier authentication completes in seconds, and risk scoring happens automatically as the load is created. No delays to your workflow." }
+  ];
 
-      return (
-        <div className="min-h-screen bg-slate-900 text-white">
-          <nav className="sticky top-0 z-50 bg-slate-900 bg-opacity-95 backdrop-blur-md border-b border-slate-800">
-            <div className="max-w-7xl mx-auto px-6 py-4">
-              <div className="flex items-center justify-between flex-wrap gap-4">
-                <svg width="140" height="48" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 25 10 L 42 16 Q 46 18 46 22 L 46 45 Q 46 52 25 58 Q 4 52 4 45 L 4 22 Q 4 18 8 16 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1" opacity="0.4"/>
-                  <path d="M 25 14 L 40 19 Q 43 20 43 24 L 43 45 Q 43 50 25 55 Q 7 50 7 45 L 7 24 Q 7 20 10 19 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1.2" opacity="0.7"/>
-                  <path d="M 25 18 L 38 22 Q 40 23 40 26 L 40 45 Q 40 49 25 53 Q 10 49 10 45 L 10 26 Q 10 23 12 22 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1.5"/>
-                  <rect x="21.5" y="32" width="7" height="9" fill="#06b6d4" rx="0.8"/>
-                  <path d="M 23 32 Q 23 29 25 28 Q 27 29 27 32" fill="none" stroke="#06b6d4" strokeWidth="1.2"/>
-                  <text x="60" y="38" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" fontSize="32" fontWeight="700" fill="#ffffff" dominantBaseline="middle">VeriHaul</text>
-                </svg>
-                <div className="flex gap-6 order-3 w-full sm:w-auto sm:order-2">
-                  <a href="#features" className="text-gray-300 hover:text-cyan-400 transition">Features</a>
-                  <a href="#pricing" className="text-gray-300 hover:text-cyan-400 transition">Pricing</a>
-                  <a href="#faq" className="text-gray-300 hover:text-cyan-400 transition">FAQ</a>
-                </div>
-                <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg transition whitespace-nowrap order-2 sm:order-3">Request Demo</a>
-              </div>
+  return (
+    <div className="min-h-screen bg-slate-900 text-white">
+      <nav className="sticky top-0 z-50 bg-slate-900 bg-opacity-95 backdrop-blur-md border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <svg width="140" height="48" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 25 10 L 42 16 Q 46 18 46 22 L 46 45 Q 46 52 25 58 Q 4 52 4 45 L 4 22 Q 4 18 8 16 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1" opacity="0.4"/>
+              <path d="M 25 14 L 40 19 Q 43 20 43 24 L 43 45 Q 43 50 25 55 Q 7 50 7 45 L 7 24 Q 7 20 10 19 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1.2" opacity="0.7"/>
+              <path d="M 25 18 L 38 22 Q 40 23 40 26 L 40 45 Q 40 49 25 53 Q 10 49 10 45 L 10 26 Q 10 23 12 22 Z" fill="#0a1628" stroke="#06b6d4" strokeWidth="1.5"/>
+              <rect x="21.5" y="32" width="7" height="9" fill="#06b6d4" rx="0.8"/>
+              <path d="M 23 32 Q 23 29 25 28 Q 27 29 27 32" fill="none" stroke="#06b6d4" strokeWidth="1.2"/>
+              <text x="60" y="38" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" fontSize="32" fontWeight="700" fill="#ffffff" dominantBaseline="middle">VeriHaul</text>
+            </svg>
+            <div className="flex gap-6 order-3 w-full sm:w-auto sm:order-2">
+              <a href="#features" className="text-gray-300 hover:text-cyan-400 transition">Features</a>
+              <a href="#pricing" className="text-gray-300 hover:text-cyan-400 transition">Pricing</a>
+              <a href="#faq" className="text-gray-300 hover:text-cyan-400 transition">FAQ</a>
             </div>
-          </nav>
-
-          <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24 px-6">
-            <div className="max-w-5xl mx-auto text-center">
-              <h1 className="text-6xl font-bold mb-4">Global freight.<br />Verified.</h1>
-              <p className="text-2xl text-gray-300 mb-8">AI-powered trust for global freight.</p>
-              <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">VeriHaul gives every load a verified digital identity. Real-time carrier authentication, continuous risk monitoring, and document verification. All in one platform.</p>
-              <div className="flex gap-4 justify-center">
-                <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="bg-cyan-600 hover:bg-cyan-700 px-8 py-4 rounded-lg font-bold text-lg transition">Request Demo</a>
-                <a href="#features" className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-4 rounded-lg font-bold text-lg transition">Learn More</a>
-              </div>
-            </div>
-          </section>
-
-          <section className="py-20 px-6 bg-slate-900">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-4xl font-bold mb-4">Stop Cargo Theft Before It Starts</h2>
-              <p className="text-xl text-gray-400 mb-12">Fake carriers. Double brokering. Unverified shipments. The freight industry loses over $500M annually to cargo theft and fraud. Most companies still rely on manual verification and incomplete data.</p>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-slate-800 border border-slate-700 p-6 rounded-lg"><div className="text-3xl font-bold text-red-400 mb-2">$500M+</div><p className="text-gray-300">Annual cargo theft in the U.S.</p></div>
-                <div className="bg-slate-800 border border-slate-700 p-6 rounded-lg"><div className="text-3xl font-bold text-orange-400 mb-2">700K+</div><p className="text-gray-300">Active carriers without verified identity</p></div>
-              </div>
-              <div className="mt-12 space-y-4">
-                <div className="flex gap-4"><div className="text-red-400 text-2xl flex-shrink-0">•</div><p className="text-gray-300"><strong>No real-time carrier authentication</strong> — Shippers can't verify legitimacy before load assignment</p></div>
-                <div className="flex gap-4"><div className="text-red-400 text-2xl flex-shrink-0">•</div><p className="text-gray-300"><strong>Manual verification is slow and unreliable</strong> — Decisions made on incomplete data</p></div>
-                <div className="flex gap-4"><div className="text-red-400 text-2xl flex-shrink-0">•</div><p className="text-gray-300"><strong>Documents can be forged</strong> — BOLs, COIs, and contracts are easily faked without intelligent verification</p></div>
-                <div className="flex gap-4"><div className="text-red-400 text-2xl flex-shrink-0">•</div><p className="text-gray-300"><strong>Fraud detection happens too late</strong> — After cargo is already stolen</p></div>
-              </div>
-            </div>
-          </section>
-
-          <section id="features" className="py-20 px-6 bg-slate-800">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-4xl font-bold mb-4 text-center">Platform Capabilities</h2>
-              <p className="text-xl text-gray-400 mb-16 text-center max-w-2xl mx-auto">VeriHaul is the AI-powered verification backbone for global freight. We authenticate carriers, analyze behavioral data, and score risk in real time before fraud happens.</p>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition"><Shield /><h3 className="text-xl font-bold mb-3 mt-4">Multi-Factor Identity Verification</h3><p className="text-gray-300">VeriHaul cross-validates business filings, DOT/MC numbers, insurance status, social presence, and ELD signals. Our AI engine learns from millions of data points to instantly detect anomalies, impersonations, and spoofing attempts before they cause damage.</p></div>
-                <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition"><Zap /><h3 className="text-xl font-bold mb-3 mt-4">AI Risk Scoring</h3><p className="text-gray-300">Every carrier receives a dynamic, AI-driven risk score built on operational history, compliance records, and behavioral patterns. Use VeriHaul's API to screen carriers before dispatch and automate trust decisions at scale.</p></div>
-                <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition"><Network /><h3 className="text-xl font-bold mb-3 mt-4">Continuous Risk Monitoring</h3><p className="text-gray-300">Freight risk evolves daily. VeriHaul continuously tracks carrier insurance, compliance, and fraud indicators. You receive alerts by dashboard and email the moment risk levels rise. Stay proactive as threats evolve.</p></div>
-                <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition"><Lock /><h3 className="text-xl font-bold mb-3 mt-4">Document Intelligence</h3><p className="text-gray-300">Machine learning verifies the authenticity and consistency of every document. VeriHaul automatically detects mismatches, forgeries, and re-use attempts across BOLs, COIs, and contracts. Every document is authentic and trusted.</p></div>
-              </div>
-              <div className="mt-12 bg-cyan-600 bg-opacity-10 border border-cyan-500 border-opacity-30 p-8 rounded-lg"><h3 className="text-xl font-bold text-cyan-400 mb-2">Seamless API Integrations</h3><p className="text-gray-300">Integrate directly with Truckstop, DAT, and McLeod. Verification and risk scoring happen automatically when loads are created. No manual steps, no friction. Built for enterprise-scale automation and trust.</p></div>
-            </div>
-          </section>
-
-          <section id="pricing" className="py-20 px-6 bg-slate-900">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-4xl font-bold mb-4 text-center">Join Our Beta Program</h2>
-              <p className="text-lg text-gray-400 text-center mb-16">Be among the first to experience verified freight intelligence</p>
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-slate-800 border border-slate-700 p-8 rounded-lg">
-                  <div className="bg-slate-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-bold inline-block mb-4">BETA ACCESS</div>
-                  <h3 className="text-2xl font-bold mb-2">Starter</h3>
-                  <p className="text-gray-400 mb-6">For small brokers and 3PLs</p>
-                  <div className="text-3xl font-bold text-cyan-400 mb-1">Early Access</div>
-                  <p className="text-gray-400 mb-8">Limited spots available</p>
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex gap-3"><Check /><span>Up to 100 loads/month</span></li>
-                    <li className="flex gap-3"><Check /><span>Multi-factor verification</span></li>
-                    <li className="flex gap-3"><Check /><span>Email support</span></li>
-                    <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">Beta pricing locked in</span></li>
-                  </ul>
-                  <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="w-full bg-slate-700 hover:bg-slate-600 px-6 py-2 rounded-lg transition text-center block">Apply for Beta</a>
-                </div>
-                <div className="bg-gradient-to-br from-cyan-600 to-cyan-700 border-2 border-cyan-500 p-8 rounded-lg relative">
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-slate-900 px-4 py-1 rounded-full text-sm font-bold">MOST POPULAR</div>
-                  <div className="bg-slate-900 text-cyan-400 px-3 py-1 rounded-full text-sm font-bold inline-block mb-4">BETA ACCESS</div>
-                  <h3 className="text-2xl font-bold mb-2">Professional</h3>
-                  <p className="text-gray-100 mb-6">For mid-sized operations</p>
-                  <div className="text-3xl font-bold mb-1">Early Access</div>
-                  <p className="text-gray-100 mb-8">Limited spots available</p>
-                  <ul className="space-y-3 mb-8 text-slate-900">
-                    <li className="flex gap-3"><Check /><span className="font-semibold">Up to 1,000 loads/month</span></li>
-                    <li className="flex gap-3"><Check /><span className="font-semibold">AI risk scoring</span></li>
-                    <li className="flex gap-3"><Check /><span className="font-semibold">Document authentication</span></li>
-                    <li className="flex gap-3"><Check /><span className="font-semibold">Priority support</span></li>
-                    <li className="flex gap-3 text-yellow-400"><Check /><span className="font-bold text-slate-900">Founding member benefits</span></li>
-                  </ul>
-                  <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="w-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-2 rounded-lg transition font-bold text-center block">Apply for Beta</a>
-                </div>
-                <div className="bg-slate-800 border border-slate-700 p-8 rounded-lg">
-                  <div className="bg-slate-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-bold inline-block mb-4">BETA ACCESS</div>
-                  <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
-                  <p className="text-gray-400 mb-6">For large logistics networks</p>
-                  <div className="text-3xl font-bold text-cyan-400 mb-1">Custom Access</div>
-                  <p className="text-gray-400 mb-8">Tailored to your needs</p>
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">Unlimited loads</span></li>
-                    <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">Advanced analytics</span></li>
-                    <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">API access</span></li>
-                    <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">Dedicated support</span></li>
-                    <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">White-glove onboarding</span></li>
-                  </ul>
-                  <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="w-full bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg transition font-bold text-center block">Schedule Call</a>
-                </div>
-              </div>
-              <div className="mt-12 bg-gradient-to-r from-cyan-600 to-cyan-700 bg-opacity-10 border border-cyan-500 border-opacity-30 p-6 rounded-lg text-center"><p className="text-lg text-gray-300"><strong className="text-cyan-400">Limited Beta Spots:</strong> Join now and lock in exclusive founding member pricing when we launch. Plus, get direct input on product development.</p></div>
-            </div>
-          </section>
-
-          <section id="faq" className="py-20 px-6 bg-slate-800">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-4xl font-bold mb-4 text-center">Frequently Asked Questions</h2>
-              <p className="text-lg text-gray-400 text-center mb-12">Have questions? We have answers.</p>
-              <div className="space-y-4">
-                {faqItems.map((item, idx) => (
-                  <div key={idx} className="bg-slate-900 border border-slate-700 rounded-lg overflow-hidden">
-                    <button onClick={() => setFaqOpen(faqOpen === idx ? null : idx)} className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800 transition">
-                      <span className="font-bold text-left">{item.q}</span>
-                      <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${faqOpen === idx ? 'transform rotate-180' : ''}`} />
-                    </button>
-                    {faqOpen === idx && <div className="px-6 py-4 bg-slate-800 border-t border-slate-700 text-gray-300">{item.a}</div>}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className="py-20 px-6 bg-gradient-to-br from-cyan-600 to-cyan-700">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl font-bold mb-6 text-slate-900">Ready to Secure Your Freight?</h2>
-              <p className="text-xl text-slate-900 mb-8">Join leading brokers and shippers who trust VeriHaul to protect their cargo and build customer confidence.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-lg font-bold text-lg transition text-center">Request a Demo</a>
-                <div className="flex items-center justify-center gap-2 text-slate-900"><Mail /><a href="mailto:demo@verihaul.com" className="font-bold hover:underline">demo@verihaul.com</a></div>
-              </div>
-            </div>
-          </section>
-
-          <footer className="bg-slate-950 border-t border-slate-800 py-12 px-6">
-            <div className="max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 mb-12">
-                <div><span className="font-bold text-xl">VeriHaul</span><p className="text-gray-400 text-sm mt-4">The verification layer for global logistics.</p></div>
-                <div><h4 className="font-bold mb-4">Product</h4><ul className="space-y-2 text-gray-400 text-sm"><li><a href="#features" className="hover:text-cyan-400 transition">Features</a></li><li><a href="#pricing" className="hover:text-cyan-400 transition">Pricing</a></li><li><a href="#" className="hover:text-cyan-400 transition">Security</a></li></ul></div>
-                <div><h4 className="font-bold mb-4">Company</h4><ul className="space-y-2 text-gray-400 text-sm"><li><a href="#" className="hover:text-cyan-400 transition">About</a></li><li><a href="#" className="hover:text-cyan-400 transition">Blog</a></li><li><a href="#" className="hover:text-cyan-400 transition">Contact</a></li></ul></div>
-                <div><h4 className="font-bold mb-4">Contact</h4><ul className="space-y-2 text-gray-400 text-sm"><li>invest@verihaul.com</li><li>demo@verihaul.com</li></ul></div>
-              </div>
-              <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm"><p>&copy; 2025 VeriHaul Technologies. All rights reserved.</p></div>
-            </div>
-          </footer>
+            <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg transition whitespace-nowrap order-2 sm:order-3">Request Demo</a>
+          </div>
         </div>
-      );
-    }
+      </nav>
 
-    ReactDOM.render(<VeriHaulLanding />, document.getElementById('root'));
-  </script>
-</body>
-</html>
+      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 className="text-6xl font-bold mb-4">Global freight.<br />Verified.</h1>
+          <p className="text-2xl text-gray-300 mb-8">AI-powered trust for global freight.</p>
+          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">VeriHaul gives every load a verified digital identity. Real-time carrier authentication, continuous risk monitoring, and document verification. All in one platform.</p>
+          <div className="flex gap-4 justify-center">
+            <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="bg-cyan-600 hover:bg-cyan-700 px-8 py-4 rounded-lg font-bold text-lg transition">Request Demo</a>
+            <a href="#features" className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-4 rounded-lg font-bold text-lg transition">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 bg-slate-900">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4">Stop Cargo Theft Before It Starts</h2>
+          <p className="text-xl text-gray-400 mb-12">Fake carriers. Double brokering. Unverified shipments. The freight industry loses over $500M annually to cargo theft and fraud. Most companies still rely on manual verification and incomplete data.</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-slate-800 border border-slate-700 p-6 rounded-lg"><div className="text-3xl font-bold text-red-400 mb-2">$500M+</div><p className="text-gray-300">Annual cargo theft in the U.S.</p></div>
+            <div className="bg-slate-800 border border-slate-700 p-6 rounded-lg"><div className="text-3xl font-bold text-orange-400 mb-2">700K+</div><p className="text-gray-300">Active carriers without verified identity</p></div>
+          </div>
+          <div className="mt-12 space-y-4">
+            <div className="flex gap-4"><div className="text-red-400 text-2xl flex-shrink-0">•</div><p className="text-gray-300"><strong>No real-time carrier authentication</strong> — Shippers can't verify legitimacy before load assignment</p></div>
+            <div className="flex gap-4"><div className="text-red-400 text-2xl flex-shrink-0">•</div><p className="text-gray-300"><strong>Manual verification is slow and unreliable</strong> — Decisions made on incomplete data</p></div>
+            <div className="flex gap-4"><div className="text-red-400 text-2xl flex-shrink-0">•</div><p className="text-gray-300"><strong>Documents can be forged</strong> — BOLs, COIs, and contracts are easily faked without intelligent verification</p></div>
+            <div className="flex gap-4"><div className="text-red-400 text-2xl flex-shrink-0">•</div><p className="text-gray-300"><strong>Fraud detection happens too late</strong> — After cargo is already stolen</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" className="py-20 px-6 bg-slate-800">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 text-center">Platform Capabilities</h2>
+          <p className="text-xl text-gray-400 mb-16 text-center max-w-2xl mx-auto">VeriHaul is the AI-powered verification backbone for global freight. We authenticate carriers, analyze behavioral data, and score risk in real time before fraud happens.</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition"><Shield /><h3 className="text-xl font-bold mb-3 mt-4">Multi-Factor Identity Verification</h3><p className="text-gray-300">VeriHaul cross-validates business filings, DOT/MC numbers, insurance status, social presence, and ELD signals. Our AI engine learns from millions of data points to instantly detect anomalies, impersonations, and spoofing attempts before they cause damage.</p></div>
+            <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition"><Zap /><h3 className="text-xl font-bold mb-3 mt-4">AI Risk Scoring</h3><p className="text-gray-300">Every carrier receives a dynamic, AI-driven risk score built on operational history, compliance records, and behavioral patterns. Use VeriHaul's API to screen carriers before dispatch and automate trust decisions at scale.</p></div>
+            <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition"><Network /><h3 className="text-xl font-bold mb-3 mt-4">Continuous Risk Monitoring</h3><p className="text-gray-300">Freight risk evolves daily. VeriHaul continuously tracks carrier insurance, compliance, and fraud indicators. You receive alerts by dashboard and email the moment risk levels rise. Stay proactive as threats evolve.</p></div>
+            <div className="bg-slate-900 border border-slate-700 p-8 rounded-lg hover:border-cyan-500 transition"><Lock /><h3 className="text-xl font-bold mb-3 mt-4">Document Intelligence</h3><p className="text-gray-300">Machine learning verifies the authenticity and consistency of every document. VeriHaul automatically detects mismatches, forgeries, and re-use attempts across BOLs, COIs, and contracts. Every document is authentic and trusted.</p></div>
+          </div>
+          <div className="mt-12 bg-cyan-600 bg-opacity-10 border border-cyan-500 border-opacity-30 p-8 rounded-lg"><h3 className="text-xl font-bold text-cyan-400 mb-2">Seamless API Integrations</h3><p className="text-gray-300">Integrate directly with Truckstop, DAT, and McLeod. Verification and risk scoring happen automatically when loads are created. No manual steps, no friction. Built for enterprise-scale automation and trust.</p></div>
+        </div>
+      </section>
+
+      <section id="pricing" className="py-20 px-6 bg-slate-900">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 text-center">Join Our Beta Program</h2>
+          <p className="text-lg text-gray-400 text-center mb-16">Be among the first to experience verified freight intelligence</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-slate-800 border border-slate-700 p-8 rounded-lg flex flex-col">
+              <div className="bg-slate-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-bold inline-block mb-4 w-fit">BETA ACCESS</div>
+              <h3 className="text-2xl font-bold mb-2">Starter</h3>
+              <p className="text-gray-400 mb-6">For small brokers and 3PLs</p>
+              <div className="text-3xl font-bold text-cyan-400 mb-1">Early Access</div>
+              <p className="text-gray-400 mb-8">Limited spots available</p>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex gap-3"><Check /><span>Up to 100 loads/month</span></li>
+                <li className="flex gap-3"><Check /><span>Multi-factor verification</span></li>
+                <li className="flex gap-3"><Check /><span>Email support</span></li>
+                <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">Beta pricing locked in</span></li>
+                <li className="flex gap-3 invisible"><Check /><span>Placeholder</span></li>
+              </ul>
+              <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="w-full bg-slate-700 hover:bg-slate-600 px-6 py-2 rounded-lg transition text-center block">Apply for Beta</a>
+            </div>
+            <div className="bg-gradient-to-br from-cyan-600 to-cyan-700 border-2 border-cyan-500 p-8 rounded-lg relative flex flex-col">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-slate-900 px-4 py-1 rounded-full text-sm font-bold">MOST POPULAR</div>
+              <div className="bg-slate-900 text-cyan-400 px-3 py-1 rounded-full text-sm font-bold inline-block mb-4 w-fit">BETA ACCESS</div>
+              <h3 className="text-2xl font-bold mb-2">Professional</h3>
+              <p className="text-gray-100 mb-6">For mid-sized operations</p>
+              <div className="text-3xl font-bold mb-1">Early Access</div>
+              <p className="text-gray-100 mb-8">Limited spots available</p>
+              <ul className="space-y-3 mb-8 text-slate-900 flex-1">
+                <li className="flex gap-3"><Check /><span className="font-semibold">Up to 1,000 loads/month</span></li>
+                <li className="flex gap-3"><Check /><span className="font-semibold">AI risk scoring</span></li>
+                <li className="flex gap-3"><Check /><span className="font-semibold">Document authentication</span></li>
+                <li className="flex gap-3"><Check /><span className="font-semibold">Priority support</span></li>
+                <li className="flex gap-3 text-yellow-400"><Check /><span className="font-bold text-slate-900">Founding member benefits</span></li>
+              </ul>
+              <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="w-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-2 rounded-lg transition font-bold text-center block">Apply for Beta</a>
+            </div>
+            <div className="bg-slate-800 border border-slate-700 p-8 rounded-lg flex flex-col">
+              <div className="bg-slate-700 text-cyan-400 px-3 py-1 rounded-full text-sm font-bold inline-block mb-4 w-fit">BETA ACCESS</div>
+              <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
+              <p className="text-gray-400 mb-6">For large logistics networks</p>
+              <div className="text-3xl font-bold text-cyan-400 mb-1">Custom Access</div>
+              <p className="text-gray-400 mb-8">Tailored to your needs</p>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">Unlimited loads</span></li>
+                <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">Advanced analytics</span></li>
+                <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">API access</span></li>
+                <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">Dedicated support</span></li>
+                <li className="flex gap-3 text-cyan-400"><Check /><span className="text-white">White-glove onboarding</span></li>
+              </ul>
+              <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="w-full bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg transition font-bold text-center block">Schedule Call</a>
+            </div>
+          </div>
+          <div className="mt-12 bg-gradient-to-r from-cyan-600 to-cyan-700 bg-opacity-10 border border-cyan-500 border-opacity-30 p-6 rounded-lg text-center"><p className="text-lg text-gray-300"><strong className="text-cyan-400">Limited Beta Spots:</strong> Join now and lock in exclusive founding member pricing when we launch. Plus, get direct input on product development.</p></div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-20 px-6 bg-slate-800">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 text-center">Frequently Asked Questions</h2>
+          <p className="text-lg text-gray-400 text-center mb-12">Have questions? We have answers.</p>
+          <div className="space-y-4">
+            {faqItems.map((item, idx) => (
+              <div key={idx} className="bg-slate-900 border border-slate-700 rounded-lg overflow-hidden">
+                <button onClick={() => setFaqOpen(faqOpen === idx ? null : idx)} className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800 transition">
+                  <span className="font-bold text-left">{item.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${faqOpen === idx ? 'transform rotate-180' : ''}`} />
+                </button>
+                {faqOpen === idx && <div className="px-6 py-4 bg-slate-800 border-t border-slate-700 text-gray-300">{item.a}</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 bg-gradient-to-br from-cyan-600 to-cyan-700">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6 text-slate-900">Ready to Secure Your Freight?</h2>
+          <p className="text-xl text-slate-900 mb-8">Join leading brokers and shippers who trust VeriHaul to protect their cargo and build customer confidence.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://calendly.com/verihaul/30min" target="_blank" rel="noopener noreferrer" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-lg font-bold text-lg transition text-center">Request a Demo</a>
+            <div className="flex items-center justify-center gap-2 text-slate-900"><Mail /><a href="mailto:demo@verihaul.com" className="font-bold hover:underline">demo@verihaul.com</a></div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-slate-950 border-t border-slate-800 py-12 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-12">
+            <div><span className="font-bold text-xl">VeriHaul</span><p className="text-gray-400 text-sm mt-4">The verification layer for global logistics.</p></div>
+            <div><h4 className="font-bold mb-4">Product</h4><ul className="space-y-2 text-gray-400 text-sm"><li><a href="#features" className="hover:text-cyan-400 transition">Features</a></li><li><a href="#pricing" className="hover:text-cyan-400 transition">Pricing</a></li><li><a href="#" className="hover:text-cyan-400 transition">Security</a></li></ul></div>
+            <div><h4 className="font-bold mb-4">Company</h4><ul className="space-y-2 text-gray-400 text-sm"><li><a href="#" className="hover:text-cyan-400 transition">About</a></li><li><a href="#" className="hover:text-cyan-400 transition">Blog</a></li><li><a href="#" className="hover:text-cyan-400 transition">Contact</a></li></ul></div>
+            <div><h4 className="font-bold mb-4">Contact</h4><ul className="space-y-2 text-gray-400 text-sm"><li>invest@verihaul.com</li><li>demo@verihaul.com</li></ul></div>
+          </div>
+          <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm"><p>&copy; 2025 VeriHaul Technologies. All rights reserved.</p></div>
+        </div>
+      </footer>
+    </div>
+  );
+}
